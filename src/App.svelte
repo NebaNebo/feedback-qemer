@@ -4,11 +4,12 @@ import { writable } from "svelte/store";
 
 let name = "";
 let email = "";
-let answer = "";
-let answer2 = "";
-let feedback = "";
 let phone = "";
-
+let Telegram = "";
+let designSkills = [];
+let usage = '';
+let paymentMethod = '';
+let heardAboutUs = '';
 // debugger.log(name, email, answer, answer2, feedback, phone);
 
 let successMessage = "";
@@ -24,12 +25,14 @@ async function handleSubmit(event) {
     formData.append("entry.1449596232", name);
     formData.append("entry.1486466929", email);
     formData.append("entry.1609330148", phone);
-    formData.append("entry.643182336", answer);
-    formData.append("entry.40298639", answer2);
-    formData.append("entry.1729006930", feedback);
+    formData.append("entry.1563992496", Telegram);
+    formData.append("entry.40298639", designSkills);
+    formData.append("entry.643182336", usage);
+    formData.append("entry.1729006930", paymentMethod);
+    formData.append("entry.1464605886", heardAboutUs);
     try {
       const response = await fetch(
-        "https://docs.google.com/forms/d/e/1FAIpQLSc8fALOmuaY7unjDwpprolE85ff-oFoMlLPe_w4c6y5fOaqYg/formResponse",
+        "https://docs.google.com/forms/d/e/1FAIpQLSejMMSsPkXvDa_8VoSaIyx-77NnWLf_L0spXOpQxY2L0jyrlg/formResponse",
         {
           method: "POST",
           mode: "no-cors",
@@ -45,11 +48,7 @@ async function handleSubmit(event) {
         errorMessage = "";
         name = "";
         email = "";
-        answer = "";
         phone = "";
-        answer2 = "";
-feedback = "";
-phone = "";
       } else {
 
 
@@ -77,8 +76,8 @@ function startLoading() {
 </script>
 
 <nav class="flex">
-  <div class="flex items-center max-w-screen-xl p-4 mx-auto jutify-center">
-    <img src="logo2@4x.png" class="h-8" alt="" />
+  <div class="flex items-center max-w-screen-xl px-4 py-3 mx-auto jutify-center">
+ <img src="logo2@4x.png" class="h-8" alt="" /> 
   </div>
 </nav>
 
@@ -95,22 +94,24 @@ border: 2px solid rgba( 255, 255, 255, 0.18 );"
     class="grid max-w-screen-xl px-2 py-8 lg:gap-10 xl:gap-14 lg:py-16 lg:grid-cols-12"
   >
     <div class="mr-auto place-self-center lg:col-span-7">
-      
-      <h1
+    
+      <div class="">
+<img src="summer camp.svg" alt=""  class="scale-90 "/>
+      <!-- <h1
       class="max-w-2xl mb-4 text-4xl leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white font-kodchasan pm"
     >
-    
+  
     Welcome to our Weekly Qemer Design Talk Feedback Form!
-    </h1>
+    </h1> -->
 
       <p
-        class="max-w-2xl mb-6 font-light text-white opacity-60 lg:mb-8 md:text-lg lg:text-xl font-kodchasan"
+        class="sticky max-w-2xl mb-6 font-light opacity-60 lg:mb-8 md:text-lg lg:text-xl font-kodchasan pm"
       >
       Thank you for participating in our design talk sessions. We value your feedback and would love to hear your thoughts on how we can improve and make these sessions even more valuable for you.
 
       Please take a few minutes to complete this form. Your responses will help us tailor future sessions to better meet your interests and needs.
       </p>
-
+    </div>
       <div class="flex flex-col items-start gap-6 my-3 submit-button">
         <p
         class="font-normal text-white text-1xl font-kodchasan opacity-60"
@@ -148,7 +149,7 @@ border: 2px solid rgba( 255, 255, 255, 0.18 );"
 
     <div class=" lg:mt-0 lg:col-span-5 lg:flex">
       <div
-        class="flex flex-col justify-center px-8 py-5 -mr-3 w-full m flex-shrink-0 rounded-[16px] bg-gradient-to-r from-[#ffc458] to-[#543703] border-1 border-[#00000055] hover:shadow-[3px_3px_0_0_#000000]"
+        class="flex flex-col justify-center px-8 py-5 -mr-3 w-full m flex-shrink-0 rounded-[16px] bg-gradient-to-r from-[#ffae58] to-[#ffa200] border-1 border-[#00000055] hover:shadow-[3px_3px_0_0_#000000]  "
       >
         {#if successMessage}
           <div class="my-2 text-3xl font-semibold text-gray-900 font-kodchasan">
@@ -214,107 +215,259 @@ We appreciate your time and insights. Your input helps us improve our weekly des
               </label>
             </div>
 
-            <div class="mb-3" data-item-id="1471615486">
+            <div class="relative h-11 w-full min-w-[300px] mb-4">
+              <input
+                bind:value={Telegram}
+                name="entry.1609330148"
+                placeholder=""
+                class="peer text-[16px] h-full w-full border-b border-black bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100 font-kodchasan font-semibold"
+              />
+              <label
+                class="after:content[''] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[16px] font-normal leading-tight text-gray-900 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-900 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[16px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 font-kodchasan font-semibold"
+              >
+              Telegram Username
+              </label>
+            </div>
+
+
+            <div class="mb-4 " data-item-id="1471615486">
               <p class="-mt-2 font-semibold font-kodchasan text-[#111827] my-2">
-                How would you rate this week's design talk session?
+                How skilled are you in design?
+                <span class="text-red-500">*</span>
               </p>
-              <label for="yes" class="flex items-center">
+              
+              <label for="Absolute0" class="flex items-center">
                 <input
-                  type="radio"
-                  bind:group={answer2}
-                  value="Excellent"
-                  id="Excellent"
-                  name="answer2"
+                  type="checkbox"
+                  bind:group={designSkills}
+                  value="Absolute 0"
+                  id="Absolute0"
+                  name="designSkills"
                   class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
                 />
-                <span class="ml-2 font-kodchasan"> Excellent</span>
+                <span class="ml-2 font-kodchasan">Absolute 0</span>
               </label>
-
-              <label for="no2" class="flex items-center">
+              
+              <label for="KnowTools" class="flex items-center">
                 <input
-                  type="radio"
-                  bind:group={answer2}
-                  value="Good"
-                  id="Good"
-                  name="answer2"
+                  type="checkbox"
+                  bind:group={designSkills}
+                  value="I know how to use the tools"
+                  id="KnowTools"
+                  name="designSkills"
                   class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
                 />
-                <span class="ml-2 font-kodchasan">Good</span>
+                <span class="ml-2 font-kodchasan">I know how to use the tools</span>
               </label>
-              <label for="no" class="flex items-center">
+              
+              <label for="WorkedAsDesigner" class="flex items-center">
                 <input
-                  type="radio"
-                  bind:group={answer2}
-                  value="Average"
-                  id="Average"
-                  name="answer2"
+                  type="checkbox"
+                  bind:group={designSkills}
+                  value="I've worked as a Graphic Designer"
+                  id="WorkedAsDesigner"
+                  name="designSkills"
                   class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
                 />
-                <span class="ml-2 font-kodchasan">Average</span>
+                <span class="ml-2 font-kodchasan">I've worked as a Graphic Designer</span>
               </label>
-
-              <label for="no" class="flex items-center">
+              
+              <label for="MoreThan2Years" class="flex items-center">
                 <input
-                  type="radio"
-                  bind:group={answer2}
-                  value="Poor"
-                  id="Poor"
-                  name="answer2"
+                  type="checkbox"
+                  bind:group={designSkills}
+                  value="I've scored more than 2 years"
+                  id="MoreThan2Years"
+                  name="designSkills"
                   class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
                 />
-                <span class="ml-2 font-kodchasan">Poor</span>
+                <span class="ml-2 font-kodchasan">I've scored more than 2 years</span>
               </label>
-
-
               
             </div>
 
-<!-- /////////////////////////////////////////// -->
 
-            <div class="mb-2" data-item-id="1471615486">
+
+
+
+
+
+            <div class="mb-3" data-item-id="1471615487">
               <p class="-mt-2 font-semibold font-kodchasan text-[#111827] my-2">
-                How did you hear about this design talk session?
+                How do you want to use your learned skill afterwards?
               </p>
-              <label for="yes" class="flex items-center">
+              <label for="Freelance" class="flex items-center">
                 <input
                   type="radio"
-                  bind:group={answer}
-                  value="LinkedIn"
-                  id="LinkedIn"
-                  name="LinkedIn"
+                  bind:group={usage}
+                  value="Freelance"
+                  id="Freelance"
+                  name="usage"
                   class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
                 />
-                <span class="ml-2 font-kodchasan"> LinkedIn</span>
+                <span class="ml-2 font-kodchasan">Freelance</span>
               </label>
-
-              <label for="no" class="flex items-center">
+            
+              <label for="Employed as a designer" class="flex items-center">
                 <input
                   type="radio"
-                  bind:group={answer}
-                  value="Telegram"
-                  id="Telegram"
-                  name="Telegram"
+                  bind:group={usage}
+                  value="Employed as a designer"
+                  id="Employed as a designer"
+                  name="usage"
                   class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
                 />
-                <span class="ml-2 font-kodchasan">Telegram</span>
+                <span class="ml-2 font-kodchasan">Employed as a designer</span>
+              </label>
+            
+              <label for="Side hustle" class="flex items-center">
+                <input
+                  type="radio"
+                  bind:group={usage}
+                  value="Side hustle"
+                  id="Side hustle"
+                  name="usage"
+                  class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+                />
+                <span class="ml-2 font-kodchasan">Side hustle</span>
+              </label>
+            
+              <label for="Complimentary skill" class="flex items-center">
+                <input
+                  type="radio"
+                  bind:group={usage}
+                  value="Complimentary skill"
+                  id="Complimentary skill"
+                  name="usage"
+                  class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+                />
+                <span class="ml-2 font-kodchasan">Complimentary skill</span>
               </label>
             </div>
+
+
+
 <!-- ////////////////////////////////////////////////////////// -->
 
 
-<div class="relative h-11 w-full min-w-[300px] mb-4">
-  <input
-    bind:value={feedback}
-    name="entry.1449596232"
-    placeholder=""
-    class="peer text-[16px] h-full w-full border-b border-black bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100 font-kodchasan font-semibold"
-  />
-  <label
-    class="after:content[''] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[16px] font-normal leading-tight text-gray-900 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-900 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[16px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 font-kodchasan font-semibold"
-  >
-  Any additional comments or feedback:
+<div class="mb-3" data-item-id="1471615488">
+  <p class="-mt-2 font-semibold font-kodchasan text-[#111827] my-2">
+    Preferred Payment Method
+  </p>
+  <label for="AccountTransfer" class="flex items-center">
+    <input
+      type="radio"
+      bind:group={paymentMethod}
+      value="Account Transfer"
+      id="AccountTransfer"
+      name="paymentMethod"
+      class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+    />
+    <span class="ml-2 font-kodchasan">Account Transfer</span>
+  </label>
+
+  <label for="Cash" class="flex items-center">
+    <input
+      type="radio"
+      bind:group={paymentMethod}
+      value="Cash"
+      id="Cash"
+      name="paymentMethod"
+      class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+    />
+    <span class="ml-2 font-kodchasan">Cash</span>
+  </label>
+
+  <label for="Telebirr" class="flex items-center">
+    <input
+      type="radio"
+      bind:group={paymentMethod}
+      value="Telebirr"
+      id="Telebirr"
+      name="paymentMethod"
+      class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+    />
+    <span class="ml-2 font-kodchasan">Telebirr</span>
   </label>
 </div>
+
+
+
+
+
+
+<div class="mb-3" data-item-id="1471615489">
+  <p class="-mt-2 font-semibold font-kodchasan text-[#111827] my-2">
+    Where did you hear about us?
+  </p>
+  <label for="Instagram" class="flex items-center">
+    <input
+      type="radio"
+      bind:group={heardAboutUs}
+      value="Instagram"
+      id="Instagram"
+      name="heardAboutUs"
+      class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+    />
+    <span class="ml-2 font-kodchasan">Instagram</span>
+  </label>
+
+  <label for="Tiktok" class="flex items-center">
+    <input
+      type="radio"
+      bind:group={heardAboutUs}
+      value="Tiktok"
+      id="Tiktok"
+      name="heardAboutUs"
+      class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+    />
+    <span class="ml-2 font-kodchasan">Tiktok</span>
+  </label>
+
+  <label for="Linkedin" class="flex items-center">
+    <input
+      type="radio"
+      bind:group={heardAboutUs}
+      value="Linkedin"
+      id="Linkedin"
+      name="heardAboutUs"
+      class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+    />
+    <span class="ml-2 font-kodchasan">Linkedin</span>
+  </label>
+
+  <label for="Facebook" class="flex items-center">
+    <input
+      type="radio"
+      bind:group={heardAboutUs}
+      value="Facebook"
+      id="Facebook"
+      name="heardAboutUs"
+      class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+    />
+    <span class="ml-2 font-kodchasan">Facebook</span>
+  </label>
+
+  <label for="Friend" class="flex items-center">
+    <input
+      type="radio"
+      bind:group={heardAboutUs}
+      value="A friend"
+      id="Friend"
+      name="heardAboutUs"
+      class="appearance-none outline-none relative cursor-pointer w-5 h-5 before:rounded-sm before:block before:absolute before:content-[''] before:w-5 before:h-5 before:rounded-sm before:border-[#111827] before:border-2 after:block after:content-[''] after:absolute after:left-1.5 after:top-0.5 after:w-2 after:h-3 after:border-black after:border-r-2 after:border-b-2 after:origin-center after:rotate-45 after:opacity-0 checked:before:bg-[#000000] checked:after:opacity-1 transition-transform transform hover:scale-110"
+    />
+    <span class="ml-2 font-kodchasan">A friend</span>
+  </label>
+</div>
+
+
+
+
+
+
+
+
 
             <div class="flex flex-col items-end gap-6 my-3 submit-button">
         
@@ -381,9 +534,10 @@ We appreciate your time and insights. Your input helps us improve our weekly des
   .pm {
     position: relative;
     text-transform: uppercase;
-    font-size: 3em;
-    font-weight:  150;
+    font-size: 1em;
+    font-weight:  15;
 	letter-spacing: 2px;
+  text-align: center;
 	color: #f35626;
 	background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
 	-webkit-background-clip: text;
